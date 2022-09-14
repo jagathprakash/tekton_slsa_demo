@@ -1,0 +1,34 @@
+apiVersion: tekton.dev/v1beta1
+kind: PipelineRun
+metadata:
+  generateName: clone-build-push-run-
+spec:
+  pipelineRef:
+    apiVersion: tekton.dev/v1beta1
+    kind: Pipeline
+    remoteType: git
+    remoteParams:
+    - name: url
+      value: https://github.com/jagathprakash/tekton_slsa_demo.git
+    - name: ref
+      value: main
+    - name: path
+      value: pipeline.yaml    
+  podTemplate:
+    # See https://github.com/tektoncd/catalog/issues/1044
+    securityContext:
+      fsGroup: 65532
+  workspaces:
+  - name: shared-data
+    volumeClaimTemplate:
+      spec:
+        accessModes:
+        - ReadWriteOnce
+        resources:
+          requests:
+            storage: 1Mi
+  params:
+  - name: repo-url
+    value: https://github.com/bendory/mini-true.git
+  - name: image-reference
+    value: us-docker.pkg.dev/jagathprakash-test/my-repo/true
