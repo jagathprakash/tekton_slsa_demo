@@ -4,16 +4,14 @@ metadata:
   generateName: clone-build-push-run-
 spec:
   pipelineRef:
-    apiVersion: tekton.dev/v1beta1
-    kind: Pipeline
-    remoteType: git
-    remoteParams:
-    - name: url
-      value: https://github.com/jagathprakash/tekton_slsa_demo.git
-    - name: ref
-      value: main
-    - name: path
-      value: pipeline.yaml    
+    resolver: bundles
+    params:
+      - name: url
+        value: https://github.com/jagathprakash/tekton_slsa_demo.git
+      - name: revision
+        value: main
+      - name: pathInRepo
+        value: pipeline.yaml   
   podTemplate:
     # See https://github.com/tektoncd/catalog/issues/1044
     securityContext:
