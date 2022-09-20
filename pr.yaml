@@ -3,6 +3,7 @@ kind: PipelineRun
 metadata:
   generateName: clone-build-push-run-
 spec:
+  serviceAccountName: jp-tk-ksa
   pipelineSpec:
     params:
     - name: repo-url
@@ -48,4 +49,4 @@ spec:
   - name: repo-url
     value: https://github.com/bendory/mini-true.git
   - name: image-reference
-    value: us-docker.pkg.dev/jagathprakash-test/my-repo/tekton-slsa-demo
+    value: us-docker.pkg.dev/jagathprakash-test/jp-tk-repo/tekton-slsa-demo
