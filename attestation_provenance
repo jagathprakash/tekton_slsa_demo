@@ -1,0 +1,31 @@
+{
+  "occurrences": [
+    {
+      "name": "projects/jagathprakash-test/occurrences/468421dc-ed99-498c-ab39-734a9bfb8219",
+      "resourceUri": "us-docker.pkg.dev/jagathprakash-test/jp-tk-repo/tekton-slsa-demo@sha256:5a1a61018be24dc2b626e06c49fa0b372ca84c75fcbd1d4766c242655e5e96d4",
+      "noteName": "projects/jagathprakash-test/notes/tktn_slsa_demo_note-simplesigning",
+      "kind": "ATTESTATION",
+      "createTime": "2022-09-21T22:30:13.920871Z",
+      "updateTime": "2022-09-21T22:30:13.920871Z",
+      "envelope": {
+        "payload": "eyJjcml0aWNhbCI6eyJpZGVudGl0eSI6eyJkb2NrZXItcmVmZXJlbmNlIjoidXMtZG9ja2VyLnBrZy5kZXYvamFnYXRocHJha2FzaC10ZXN0L2pwLXRrLXJlcG8vdGVrdG9uLXNsc2EtZGVtbyJ9LCJpbWFnZSI6eyJkb2NrZXItbWFuaWZlc3QtZGlnZXN0Ijoic2hhMjU2OjVhMWE2MTAxOGJlMjRkYzJiNjI2ZTA2YzQ5ZmEwYjM3MmNhODRjNzVmY2JkMWQ0NzY2YzI0MjY1NWU1ZTk2ZDQifSwidHlwZSI6ImNvc2lnbiBjb250YWluZXIgaW1hZ2Ugc2lnbmF0dXJlIn0sIm9wdGlvbmFsIjpudWxsfQ==",
+        "payloadType": "simplesigning",
+        "signatures": [
+          {
+            "sig": "KXKQB2HxOelgX0ABP+4dC/cYlduklOLTHwRmsOEBmVmVRkrmkKRwldlMLDMVbDKx7MJgHFSk2dexr1QkYoJJha5p0s/9kiqdH5N7qKHbsd7AmHeHNLW+FANbI84MDkqPEdznqavmXy1UDqm8Cx1vWp5fy2t5EboZJadlDWKq+kUsVws4Q2EIDXVlO8qceHSryCqr+KQGXRWRB9QpNKh+fjKnnx/GUa3va6y1LSIV95IwuiD2mFwpvZnwV5s3eq5WEA6BcS2fKWMv05SEfAZ3G8z4RWvRX8YG/QkxWJhrSwKNPeMcKHYySR1Kw8NkWCygjGn+pUFDS8t6ALUNjr0VDw==",
+            "keyid": "gcpkms://projects/jagathprakash-test/locations/us/keyRings/pj-tk-keyring/cryptoKeys/pj-tk-key/cryptoKeyVersions/1"
+          }
+        ]
+      },
+      "attestation": {
+        "serializedPayload": "eyJjcml0aWNhbCI6eyJpZGVudGl0eSI6eyJkb2NrZXItcmVmZXJlbmNlIjoidXMtZG9ja2VyLnBrZy5kZXYvamFnYXRocHJha2FzaC10ZXN0L2pwLXRrLXJlcG8vdGVrdG9uLXNsc2EtZGVtbyJ9LCJpbWFnZSI6eyJkb2NrZXItbWFuaWZlc3QtZGlnZXN0Ijoic2hhMjU2OjVhMWE2MTAxOGJlMjRkYzJiNjI2ZTA2YzQ5ZmEwYjM3MmNhODRjNzVmY2JkMWQ0NzY2YzI0MjY1NWU1ZTk2ZDQifSwidHlwZSI6ImNvc2lnbiBjb250YWluZXIgaW1hZ2Ugc2lnbmF0dXJlIn0sIm9wdGlvbmFsIjpudWxsfQ==",
+        "signatures": [
+          {
+            "signature": "KXKQB2HxOelgX0ABP+4dC/cYlduklOLTHwRmsOEBmVmVRkrmkKRwldlMLDMVbDKx7MJgHFSk2dexr1QkYoJJha5p0s/9kiqdH5N7qKHbsd7AmHeHNLW+FANbI84MDkqPEdznqavmXy1UDqm8Cx1vWp5fy2t5EboZJadlDWKq+kUsVws4Q2EIDXVlO8qceHSryCqr+KQGXRWRB9QpNKh+fjKnnx/GUa3va6y1LSIV95IwuiD2mFwpvZnwV5s3eq5WEA6BcS2fKWMv05SEfAZ3G8z4RWvRX8YG/QkxWJhrSwKNPeMcKHYySR1Kw8NkWCygjGn+pUFDS8t6ALUNjr0VDw==",
+            "publicKeyId": "gcpkms://projects/jagathprakash-test/locations/us/keyRings/pj-tk-keyring/cryptoKeys/pj-tk-key/cryptoKeyVersions/1"
+          }
+        ]
+      }
+    }
+  ]
+}

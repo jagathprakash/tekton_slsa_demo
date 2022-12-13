@@ -1,0 +1,63 @@
+apiVersion: tekton.dev/v1beta1
+kind: Pipeline
+metadata:
+  name: slsa-demo-pipeline
+spec:
+  description: | 
+    This pipeline clones a git repo, builds a Docker image with Kaniko and
+    pushes it to a registry
+  params:
+    - name: repo-url
+      type: string
+    - name: image-reference
+      type: string
+  results:
+    - description: Repository commit used for building the image.
+      name: CHAINS-GIT_COMMIT
+      value: $(tasks.fetch-source.results.commit)
+    - description: Repository URL used for buiding the image.
+      name: CHAINS-GIT_URL
+      type: string
+      value: $(tasks.fetch-source.results.url)
+    - description: The image url of the built artifact.
+      name: IMAGE_URL
+      value: $(tasks.build.results.IMAGE_URL)
+    - description: The image digest of the built artifact.
+      name: IMAGE_DIGEST
+      value: $(tasks.build.results.IMAGE_DIGEST)
+  workspaces:
+    - name: shared-data
+  tasks:
+    - name: fetch-source
+      taskRef:
+        resolver: git
+        params:
+          - name: url
+            value: https://github.com/tektoncd/catalog.git
+          - name: pathInRepo
+            value: /task/git-clone/0.9/git-clone.yaml
+          - name: revision
+            value: main
+      workspaces:
+        - name: output
+          workspace: shared-data
+      params:
+      - name: url
+        value: $(params.repo-url)
+    - name: build
+      runAfter: ["fetch-source"]
+      taskRef:
+        resolver: git
+        params:
+          - name: url
+            value: https://github.com/tektoncd/catalog.git
+          - name: pathInRepo
+            value: /task/kaniko/0.6/kaniko.yaml
+          - name: revision
+            value: main
+      workspaces:
+      - name: source
+        workspace: shared-data
+      params:
+      - name: IMAGE
+        value: $(params.image-reference)
