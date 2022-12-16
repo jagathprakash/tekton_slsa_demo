@@ -145,5 +145,6 @@ kubectl patch configmap chains-config -n tekton-chains -p='{"data":{"artifacts.p
 kubectl patch configmap chains-config -n tekton-chains -p='{"data":{"artifacts.oci.storage": "grafeas"}}'
 kubectl patch configmap chains-config -n tekton-chains -p='{"data":{"storage.grafeas.projectid": "'"$PROJECT_ID"'"}}'
 kubectl patch configmap chains-config -n tekton-chains -p='{"data":{"storage.grafeas.noteid": "tktn_slsa_demo_note"}}'
+kubectl patch configmap chains-config -n tekton-chains -p='{"data":{"builder.id": "jagathprakash@google.com"}}'
 
 kubectl patch configmap feature-flags -n tekton-pipelines -p='{"data":{"enable-provenance-in-status": "true"}}'

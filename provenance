@@ -5,20 +5,20 @@
     {
       "name": "us-docker.pkg.dev/jagathprakash-test/jp-repo/tekton-slsa-demo",
       "digest": {
-        "sha256": "315c559f49dd1b795fd767ceb77d9c2025a9b850b8a754213cfa8e26c5adef5b"
+        "sha256": "64fdff72488e07c3a2594de4aa50028bfca3e0f0c4f1ba137b3ce58a9298747e"
       }
     }
   ],
   "predicate": {
     "builder": {
-      "id": "example.com"
+      "id": "jagathprakash@google.com"
     },
     "buildType": "tekton.dev/v1beta1/PipelineRun",
     "invocation": {
       "configSource": {
         "uri": "git+https://github.com/jagathprakash/tekton_slsa_demo.git",
         "digest": {
-          "sha1": "54865e15a97d997a404a6d51bc88a467b5d65d61"
+          "sha1": "7802e8582d20be6aadd2e1aa12beb61472d435e7"
         },
         "entryPoint": "pipeline.yaml"
       },
@@ -49,8 +49,8 @@
               }
             ]
           },
-          "startedOn": "2022-12-16T20:27:19Z",
-          "finishedOn": "2022-12-16T20:27:34Z",
+          "startedOn": "2022-12-16T22:27:34Z",
+          "finishedOn": "2022-12-16T22:27:56Z",
           "status": "Succeeded",
           "steps": [
             {
@@ -126,8 +126,8 @@
               }
             ]
           },
-          "startedOn": "2022-12-16T20:27:34Z",
-          "finishedOn": "2022-12-16T20:28:16Z",
+          "startedOn": "2022-12-16T22:27:57Z",
+          "finishedOn": "2022-12-16T22:28:36Z",
           "status": "Succeeded",
           "steps": [
             {
@@ -174,7 +174,7 @@
             {
               "name": "IMAGE_DIGEST",
               "type": "string",
-              "value": "sha256:315c559f49dd1b795fd767ceb77d9c2025a9b850b8a754213cfa8e26c5adef5b"
+              "value": "sha256:64fdff72488e07c3a2594de4aa50028bfca3e0f0c4f1ba137b3ce58a9298747e"
             },
             {
               "name": "IMAGE_URL",
@@ -186,8 +186,8 @@
       ]
     },
     "metadata": {
-      "buildStartedOn": "2022-12-16T20:27:16Z",
-      "buildFinishedOn": "2022-12-16T20:28:16Z",
+      "buildStartedOn": "2022-12-16T22:27:31Z",
+      "buildFinishedOn": "2022-12-16T22:28:36Z",
       "completeness": {
         "parameters": false,
         "environment": false,
