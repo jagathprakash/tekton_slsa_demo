@@ -1,1 +1,4 @@
 export IMAGE_REF=$(tkn pr describe --last -o jsonpath="{.status.pipelineResults[2].value}")@$(tkn pr describe --last -o jsonpath="{.status.pipelineResults[3].value}")
+gcloud artifacts docker images describe $IMAGE_REF --show-all-metadata --format json | jq -r '.provenance_summary.provenance[0].envelope.payload' | tr '\-_' '+/' | base64 -d | jq > provenance
+gcloud artifacts docker images describe $IMAGE_REF --show-all-metadata --format json | jq -r '.provenance_summary.provenance[0].envelope.signatures[0].sig' | tr '\-_' '+/' | base64 -d > signature
+cosign verify-blob --key $KEY_REF --signature signature signature

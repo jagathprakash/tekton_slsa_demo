@@ -125,7 +125,7 @@ kubectl annotate serviceaccount $KSA_NAME \
 # install pipelines
 kubectl apply --filename https://storage.googleapis.com/tekton-releases/pipeline/latest/release.yaml
 # install chains
-kubectl apply --filename https://storage.googleapis.com/tekton-releases/chains/previous/v0.11.0/release.yaml
+kubectl apply -f https://storage.googleapis.com/tekton-releases-nightly/chains/previous/v20221215-6d3449f5ea/release.yaml
 
 gcloud iam service-accounts add-iam-policy-binding $GSA_NAME@$PROJECT_ID.iam.gserviceaccount.com \
   --role "roles/iam.workloadIdentityUser" \
@@ -136,16 +136,14 @@ kubectl annotate serviceaccount tekton-chains-controller \
     --namespace tekton-chains \
     iam.gke.io/gcp-service-account=$GSA_NAME@$PROJECT_ID.iam.gserviceaccount.com
 
-kubectl patch configmap chains-config -n tekton-chains -p='{"data":{"artifacts.taskrun.format": "in-toto"}}'
+kubectl patch configmap chains-config -n tekton-chains -p='{"data":{"artifacts.pipelinerun.format": "in-toto"}}'
 kubectl patch configmap chains-config -n tekton-chains -p='{"data":{"artifacts.oci.format": "simplesigning"}}'
-kubectl patch configmap chains-config -n tekton-chains -p='{"data":{"artifacts.taskrun.signer": "kms"}}'
+kubectl patch configmap chains-config -n tekton-chains -p='{"data":{"artifacts.pipelinerun.signer": "kms"}}'
 kubectl patch configmap chains-config -n tekton-chains -p='{"data":{"artifacts.oci.signer": "kms"}}'
 kubectl patch configmap chains-config -n tekton-chains -p="{\"data\":{\"signers.kms.kmsref\": \"${KMS_REF}\"}}"
-kubectl patch configmap chains-config -n tekton-chains -p='{"data":{"artifacts.taskrun.storage": "grafeas"}}'
+kubectl patch configmap chains-config -n tekton-chains -p='{"data":{"artifacts.pipelinerun.storage": "grafeas"}}'
 kubectl patch configmap chains-config -n tekton-chains -p='{"data":{"artifacts.oci.storage": "grafeas"}}'
 kubectl patch configmap chains-config -n tekton-chains -p='{"data":{"storage.grafeas.projectid": "'"$PROJECT_ID"'"}}'
 kubectl patch configmap chains-config -n tekton-chains -p='{"data":{"storage.grafeas.noteid": "tktn_slsa_demo_note"}}'
 
-# Enable git-resolver
-jsonpatch=$(printf "{\"data\": {\"enable-git-resolver\": \"true\", \"enable-provenance-in-status\": \"true\"}}")
-kubectl patch configmap resolvers-feature-flags -n tekton-pipelines-resolvers -p "$jsonpatch"
+kubectl patch configmap feature-flags -n tekton-pipelines -p='{"data":{"enable-provenance-in-status": "true"}}'
