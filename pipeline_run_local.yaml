@@ -5,14 +5,7 @@ metadata:
 spec:
   serviceAccountName: jp-ksa
   pipelineRef:
-    resolver: git
-    params:
-      - name: url
-        value: https://github.com/jagathprakash/tekton_slsa_demo.git
-      - name: pathInRepo
-        value: pipeline.yaml
-      - name: revision
-        value: main
+    name: slsa-demo-pipeline
   workspaces:
   - name: shared-data
     volumeClaimTemplate:

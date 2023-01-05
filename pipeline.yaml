@@ -12,19 +12,16 @@ spec:
     - name: image-reference
       type: string
   results:
-    - description: Repository commit used for building the image.
-      name: CHAINS-GIT_COMMIT
-      value: $(tasks.fetch-source.results.commit)
-    - description: Repository URL used for buiding the image.
-      name: CHAINS-GIT_URL
-      type: string
-      value: $(tasks.fetch-source.results.url)
-    - description: The image url of the built artifact.
-      name: IMAGE_URL
-      value: $(tasks.build.results.IMAGE_URL)
-    - description: The image digest of the built artifact.
-      name: IMAGE_DIGEST
-      value: $(tasks.build.results.IMAGE_DIGEST)
+    - name: image-ARTIFACT_INPUTS
+      description: Source code used to build the artifact.
+      value:
+        uri: $(tasks.fetch-source.results.url)
+        digest: sha1:$(tasks.fetch-source.results.commit)
+    - name: image-ARTIFACT_OUTPUTS
+      description: The artifact that has been built.
+      value:
+        uri: $(tasks.build.results.IMAGE_URL)
+        digest: $(tasks.build.results.IMAGE_DIGEST)
   workspaces:
     - name: shared-data
   tasks:
