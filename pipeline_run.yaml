@@ -22,10 +22,6 @@ spec:
         resources:
           requests:
             storage: 1Mi
-  podTemplate:
-    # See https://github.com/tektoncd/catalog/issues/1044
-    securityContext:
-      fsGroup: 65532
   params:
   - name: repo-url
     value: https://github.com/bendory/mini-true.git
